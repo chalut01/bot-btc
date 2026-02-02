@@ -11,9 +11,24 @@ def load_state():
     return normalize_state(state)
 
 def save_state(state):
-    os.makedirs(os.path.dirname(config.STATE_FILE), exist_ok=True)
-    with open(config.STATE_FILE, "w", encoding="utf-8") as f:
+    # Write atomically: write to a temp file then replace the target file.
+    dirpath = os.path.dirname(config.STATE_FILE) or "."
+    try:
+        os.makedirs(dirpath, exist_ok=True)
+        target_file = config.STATE_FILE
+    except PermissionError:
+        # Fallback to a local ./data directory if configured path is not writable.
+        fallback_dir = os.path.join(os.getcwd(), "data")
+        os.makedirs(fallback_dir, exist_ok=True)
+        target_file = os.path.join(fallback_dir, os.path.basename(config.STATE_FILE))
+        # update config so other parts of the app read/write the same file
+        config.STATE_FILE = target_file
+
+    tmp_path = target_file + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(state, f, ensure_ascii=False, indent=2)
+    # atomic replace (works on Windows and POSIX)
+    os.replace(tmp_path, target_file)
 
 def normalize_state(state: dict) -> dict:
     state.setdefault("position", "flat")

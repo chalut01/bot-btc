@@ -127,6 +127,8 @@ BTC_BOT/
 
 ทำตามขั้นตอนนี้ได้เลย ใช้เวลาไม่เกิน 5 นาที
 
+Note: This project requires Python 3.8+ (the code uses Python 3 syntax). If your system's `python` points to Python 2, use `python3` or the `py -3` launcher on Windows.
+
 ---
 
 ### 1️⃣ เตรียม Telegram Bot
@@ -176,5 +178,24 @@ STATE_FILE=/app/data/btc_5m_longshort_state.json
 ---
 
 ### 3️⃣ RUN
-docker-compose up -d --build
-docker compose logs -f
+Docker (recommended):
+
+	docker-compose up -d --build
+	docker compose logs -f
+
+Local (without Docker):
+
+WSL / Linux / macOS:
+
+	python3 -m pip install -r requirements.txt
+	python3 -m btc_bot.backtest --strategy trend --limit 200
+
+PowerShell (Windows):
+
+	py -3 -m pip install -r requirements.txt
+	py -3 -m btc_bot.backtest --strategy trend --limit 200
+
+Or use the provided helper scripts:
+
+WSL / Linux: `./scripts/run_backtest.sh [strategy] [limit]`
+PowerShell: `./scripts/run_backtest.ps1 -strategy trend -limit 200`

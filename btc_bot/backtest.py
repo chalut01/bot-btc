@@ -16,6 +16,8 @@ def pick_strategy(name: str):
 
 def run_backtest(strategy_name: str, limit: int):
     strat = pick_strategy(strategy_name)
+    # validate config for backtest run
+    config.validate_config()
     df = klines(config.SYMBOL, config.KLINE_INTERVAL, limit)
 
     # state (paper only)

@@ -85,3 +85,15 @@ SLIPPAGE_RATE = env_float("SLIPPAGE_RATE", 0.0005)
 
 # ===== Backtest =====
 BACKTEST_KLINES_LIMIT = env_int("BACKTEST_KLINES_LIMIT", 3000)
+
+
+def validate_config():
+    # Basic validation and sanity checks for important env vars
+    if START_CASH_USDT <= 0 and PAPER_TRADING:
+        raise ValueError("START_CASH_USDT must be > 0 when PAPER_TRADING is enabled")
+    if not (0.0 <= ORDER_PCT <= 1.0):
+        raise ValueError("ORDER_PCT must be between 0.0 and 1.0")
+    if POLL_SEC <= 0:
+        raise ValueError("POLL_SEC must be a positive integer")
+    if USE_KILL_SWITCH and MAX_DAILY_DD_PCT <= 0:
+        raise ValueError("MAX_DAILY_DD_PCT must be > 0 when USE_KILL_SWITCH is enabled")

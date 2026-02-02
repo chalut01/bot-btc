@@ -1,24 +1,24 @@
 {
   "position": "flat",
-  "last_bar_ms": 1769997899999,
+  "last_bar_ms": 1770011399999,
   "last_notify_ts": 0,
-  "cooldown_until_bar_ms": 0,
+  "cooldown_until_bar_ms": 1770011699999,
   "day": "",
   "day_start_value": null,
   "halt_today": false,
   "paper": {
     "enabled": true,
     "start_cash": 1000.0,
-    "cash": 1000.0,
+    "cash": 1007.0682956226082,
     "btc_long": 0.0,
     "avg_long": 0.0,
     "btc_short": 0.0,
     "avg_short": 0.0,
-    "realized_pnl": 0.0,
-    "trades": 0,
+    "realized_pnl": 7.068295622608131,
+    "trades": 4,
     "trail_active": false,
     "trail_stop": 0.0,
-    "entry_atr": 0.0,
-    "entry_price": 0.0
+    "entry_atr": 328.1435714285731,
+    "entry_price": 75050.456
   }
 }
