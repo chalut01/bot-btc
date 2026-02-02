@@ -1,11 +1,11 @@
 {
-  "day": "2026-02-01",
-  "day_start_value": 1000.0,
-  "halt_today": false,
-  "last_notify_ts": 0,
-  "last_bar_ms": 1769958599999,
-  "cooldown_until_bar_ms": 0,
   "position": "flat",
+  "last_bar_ms": 1769997899999,
+  "last_notify_ts": 0,
+  "cooldown_until_bar_ms": 0,
+  "day": "",
+  "day_start_value": null,
+  "halt_today": false,
   "paper": {
     "enabled": true,
     "start_cash": 1000.0,
