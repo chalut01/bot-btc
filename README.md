@@ -180,7 +180,7 @@ STATE_FILE=/app/data/btc_5m_longshort_state.json
 ### 3️⃣ RUN
 Docker (recommended):
 
-	docker-compose up -d --build
+	docker compose up -d --build
 	docker compose logs -f
 
 Local (without Docker):

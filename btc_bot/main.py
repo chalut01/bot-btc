@@ -7,7 +7,8 @@ from .market.binance_api import spot_price, klines
 from .market.indicators import ema
 from .trading import paper
 from .strategy import trend_breakout_5m, range_reversion_5m
-import datetime
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 logger = setup_logger()
 tg = TelegramClient()
@@ -79,13 +80,16 @@ def main():
 
             # update daily start value and reset halt flag on new UTC day
             try:
-                now_day = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+                now_bkk = datetime.now(ZoneInfo("Asia/Bangkok"))
+                state["last_updated"] = now_bkk.isoformat()
+                today = now_bkk.date().isoformat()  # "2026-02-03"
+                
                 pv = paper.portfolio_value(state["paper"], float(price_now))
-                if state.get("day") != now_day:
-                    state["day"] = now_day
+                if state.get("day") != today:
+                    state["day"] = today
                     state["day_start_value"] = pv
                     state["halt_today"] = False
-                    logger.info(f"New day {now_day}, day_start_value={pv:.2f}")
+                    logger.info(f"New day {today}, day_start_value={pv:.2f}")
                     save_state(state)
                 else:
                     # check kill-switch

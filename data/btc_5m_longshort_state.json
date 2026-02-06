@@ -1,24 +1,25 @@
 {
   "position": "flat",
-  "last_bar_ms": 1770038099999,
+  "last_bar_ms": 1770399599999,
   "last_notify_ts": 0,
-  "cooldown_until_bar_ms": 1770015599999,
-  "day": "2026-02-02",
-  "day_start_value": 1007.0682956226082,
+  "cooldown_until_bar_ms": 1770360299999,
+  "day": "2026-02-07",
+  "day_start_value": 1030.8218799608433,
   "halt_today": false,
   "paper": {
     "enabled": true,
     "start_cash": 1000.0,
-    "cash": 991.1459306157685,
+    "cash": 1030.8218799608433,
     "btc_long": 0.0,
     "avg_long": 0.0,
     "btc_short": 0.0,
     "avg_short": 0.0,
-    "realized_pnl": -8.854069384231323,
-    "trades": 6,
+    "realized_pnl": 30.821879960843567,
+    "trades": 12,
     "trail_active": false,
     "trail_stop": 0.0,
-    "entry_atr": 372.21500000000066,
-    "entry_price": 75095.13365
-  }
+    "entry_atr": 0.0,
+    "entry_price": 65493.29697
+  },
+  "last_updated": "2026-02-07T00:40:02.042851+07:00"
 }
